@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  period: 1
+  worst_case_execution_time: 1
+  offset: 1
+  deadline: 1
+  name: MyString
+
+two:
+  period: 1
+  worst_case_execution_time: 1
+  offset: 1
+  deadline: 1
+  name: MyString
