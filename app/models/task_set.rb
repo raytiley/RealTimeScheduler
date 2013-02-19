@@ -2,6 +2,8 @@ class TaskSet < ActiveRecord::Base
   attr_accessible :name, :tasks
   has_many :tasks
 
+  validates_uniqueness_of :name
+
   def hyper_period
   	# hyper perid = lowest common multiple of all periods in task set
   	periods = self.tasks.pluck(:period)
