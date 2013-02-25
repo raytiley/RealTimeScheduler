@@ -9,6 +9,12 @@ class TaskSetTest < ActiveSupport::TestCase
 
 		assert_equal "Silly Task Set", ts.name
 		assert_equal 30, ts.hyper_period
+  	end
+
+  test "Hyper Period of 0 tasks is 0" do
+  	task = TaskSet.create(:name => "Empty Task Set")
+
+  	assert_equal 0, task.hyper_period
   end
 
   test "Find highest priority task in the queue" do

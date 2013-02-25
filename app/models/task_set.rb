@@ -5,7 +5,10 @@ class TaskSet < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def hyper_period
-  	# hyper perid = lowest common multiple of all periods in task set
+  	#check for tasks
+    return 0 unless self.tasks.count > 0
+
+    # hyper perid = lowest common multiple of all periods in task set
   	periods = self.tasks.pluck(:period)
   	periods.inject(:lcm)
   end
