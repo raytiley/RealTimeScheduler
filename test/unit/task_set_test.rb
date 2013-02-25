@@ -173,8 +173,10 @@ class TaskSetTest < ActiveSupport::TestCase
 
 		ts.save
 
-		expected_schedule = ["Task Two", "Task Two", "Task Two", "Task Two", "Task Two",
-      "Task One", "Task One", "Task One", "Task One", "Task One"]
+		expected_schedule = [
+			task_two.id, task_two.id, task_two.id, task_two.id, task_two.id,
+      		task_one.id, task_one.id, task_one.id, task_one.id, task_one.id]
+
       schedule = ts.generate_schedule
 
       assert_equal expected_schedule, schedule

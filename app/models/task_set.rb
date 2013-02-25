@@ -63,7 +63,7 @@ class TaskSet < ActiveRecord::Base
   		end
 
   		# add current job to schedule
-  		schedule.push(current_job.nil? ? nil : current_job[:task].name)
+  		schedule.push(current_job.nil? ? 0 : current_job[:task].id)
 
   		#log whats executing in this slot
   		#puts "Slot #{time + 1} " + (current_job.nil? ? "Idle" : current_job[:task].name)
