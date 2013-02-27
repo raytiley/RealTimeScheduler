@@ -18,8 +18,8 @@ class TaskSetsController < ActionController::Base
 	end
 
 	def schedule
-		@task_set = TaskSet.find(params[:id])
-		render :json => @task_set.generate_schedule.to_json
+		@schedule = TaskSet.find(params[:id]).generate_schedule
+		render :json  => @schedule.to_json
 	end
 	
 end
