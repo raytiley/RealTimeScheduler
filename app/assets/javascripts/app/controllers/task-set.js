@@ -1,13 +1,11 @@
 App.TaskSetController = Ember.ObjectController.extend({
 	delete: function(taskID) {
-		console.log('deleting task id: ' + taskID);
 		var task = App.Task.find(taskID);
 		task.deleteRecord();
 		this.get('store').commit();
 		this.get('model').reload();
 	},
 	newTask: function() {
-		console.log('saving new TAsk');
 		var ts = this.get('model');
 		var task = App.Task.createRecord({
 			taskSet: ts,
