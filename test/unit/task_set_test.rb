@@ -2,10 +2,12 @@ require 'test_helper'
 
 class TaskSetTest < ActiveSupport::TestCase
 	test "Calculate Hyper Period" do
-		ts = TaskSet.create(:name => "Silly Task Set",
-     :tasks => [Task.new(:period => 5),
-      Task.new(:period => 10),
-      Task.new(:period => 15)])
+		ts = TaskSet.create(
+			:name => "Silly Task Set",
+     		:tasks => [
+     			Task.new(:period => 5),
+      			Task.new(:period => 10),
+      			Task.new(:period => 15)])
 
 		assert_equal "Silly Task Set", ts.name
 		assert_equal 30, ts.hyper_period
