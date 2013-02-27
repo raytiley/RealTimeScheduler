@@ -1,4 +1,11 @@
-App = Ember.Application.create();
+App = Ember.Application.create({
+	ready: function() {
+		setInterval(function() {
+			App.TaskSet.find();
+			console.log("polling...");
+		}, 5000);
+	}
+});
 
 App.Store = DS.Store.extend({
   revision: 11
