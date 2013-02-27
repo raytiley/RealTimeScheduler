@@ -11,6 +11,12 @@ body {
 	margin-top:15px;
 }
 
+.task-list-item {
+	height:30px;
+	font-weight: bolder;
+	margin-top: 5px;
+}
+
 .chart {
 	shape-rendering: crispEdges;
 }

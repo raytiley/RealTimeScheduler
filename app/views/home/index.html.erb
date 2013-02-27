@@ -64,27 +64,32 @@
 <script type="text/x-handlebars" data-template-name="taskSet">
 	<div class="row">
 		<span class="span3"><h3>{{ name }}</h3></span>
-		<span class="span2">
-			<a class="btn btn-small btn-success task-btn" {{action "new"}} ><i></i>New</a>
-			<a class="btn btn-small btn-primary task-btn" {{action "save"}} ><i></i>Save</a>
-		</span>
 	</div>
 
-		<div class="row">
-			<span class="span2"><h4>Name</h4></span>
-			<span class="span1"><h4>Period</h4></span>
-			<span class="span1"><h4>Deadline</h4></span>
-			<span class="span1"><h4>WCET</h4></span>
-			<span class="span1"><h4>Offset</h4></span>
-		</div>
+	<div class="row">
+		<span class="span2"><h4>Name</h4></span>
+		<span class="span1"><h4>Period</h4></span>
+		<span class="span2"><h4>Deadline</h4></span>
+		<span class="span1"><h4>WCET</h4></span>
+		<span class="span1"><h4>Offset</h4></span>
+	</div>
+
+	<div class="controls controls-row">
+	{{view Ember.TextField valueBinding="newName" class="span2" placeholder="name"}}
+	{{view Ember.TextField valueBinding="newPeriod" class="span1" placeholder="period"}}
+	{{view Ember.TextField valueBinding="newDeadline" class="span2" placeholder="deadline"}}
+	{{view Ember.TextField valueBinding="newWCET" class="span1" placeholder="wcet"}}
+	{{view Ember.TextField valueBinding="newOffset" class="span1" placeholder="offset"}}
+	<span class="span1"><a class="btn btn-small btn-success" {{action "newTask" }}><i class="icon-plus-sign"></i></a></span>
+	</div>
 
 	{{#each task in tasks}}
-		<div class="controls controls-row">
-		{{view Ember.TextField valueBinding="task.name" class="span2" placeholder="name"}}
-		{{view Ember.TextField valueBinding="task.period" class="span1" placeholder="period"}}
-		{{view Ember.TextField valueBinding="task.deadline" class="span1" placeholder="deadline"}}
-		{{view Ember.TextField valueBinding="task.worstCaseExecutionTime" class="span1" placeholder="wcet"}}
-		{{view Ember.TextField valueBinding="task.offset" class="span1" placeholder="offset"}}
+		<div class="row task-list-row">
+		<span class="span2 task-list-item">{{ task.name }}</span>
+		<span class="span1 task-list-item">{{ task.period }}</span>
+		<span class="span2 task-list-item">{{ task.deadline }}</span>
+		<span class="span1 task-list-item">{{ task.worstCaseExecutionTime }}</span>
+		<span class="span1 task-list-item">{{ task.offset }}</span>
 		<span class="span1"><a class="btn btn-small btn-danger" {{action "delete" task.id}}><i class="icon-minus-sign"></i></a></span>
 		</div>
 	{{/each}}

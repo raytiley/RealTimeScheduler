@@ -2,7 +2,6 @@ App = Ember.Application.create({
 	ready: function() {
 		setInterval(function() {
 			App.TaskSet.find();
-			console.log("polling...");
 		}, 5000);
 	}
 });

@@ -1,7 +1,4 @@
 App.TaskSetController = Ember.ObjectController.extend({
-	drawSchedule: function() {
-		console.log("Drawwing Schedule");
-	},
 	delete: function(taskID) {
 		console.log('deleting task id: ' + taskID);
 		var task = App.Task.find(taskID);
@@ -9,14 +6,31 @@ App.TaskSetController = Ember.ObjectController.extend({
 		this.get('store').commit();
 		this.get('model').reload();
 	},
-	new: function() {
-		console.log('new task');
+	newTask: function() {
+		console.log('saving new TAsk');
 		var ts = this.get('model');
-		var task = App.Task.createRecord({taskSet: ts});
-		ts.get('tasks').addObject(task);
+		var task = App.Task.createRecord({
+			taskSet: ts,
+			name: this.get('newName'),
+			period: this.get('newPeriod'),
+			deadline: this.get('newDeadline'),
+			worstCaseExecutionTime: this.get('newWCET'),
+			offset: this.get('newOffset')
+		});
+		task.get('store').commit();
+		this.resetNewInputs();
+		ts.reload();
 	},
-	save: function() {
-		this.get('model').get('store').commit();
-		this.get('model').reload();
+	newName: "",
+	newPeriod: "",
+	newDeadline: "",
+	newWCET: "",
+	newOffset: "",
+	resetNewInputs: function() {
+		this.set('newName', '');
+		this.set('newPeriod', '');
+		this.set('newDeadline', '');
+		this.set('newWCET', '');
+		this.set('newOffset', '');
 	}
 });
