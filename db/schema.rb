@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216160249) do
+ActiveRecord::Schema.define(:version => 20130224165807) do
+
+  create_table "schedule_items", :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "time_slot"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.string   "name"
+    t.integer  "task_set_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "task_sets", :force => true do |t|
     t.string   "name"

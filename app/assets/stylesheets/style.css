@@ -1,0 +1,94 @@
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+.taskLists {
+	height:400px;
+	overflow: auto;
+}
+
+.task-btn {
+	margin-top:15px;
+}
+
+.chart {
+	shape-rendering: crispEdges;
+}
+
+.mini text {
+	font: 9px sans-serif;	
+}
+
+.miniItem0 {
+	fill: blue;
+	stroke-width: 6;	
+}
+
+.miniItem1 {
+	fill: blueviolet;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem2 {
+	fill: brown;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem3 {
+	fill: cadetblue;
+	stroke-width: 6;	
+}
+
+.miniItem4 {
+	fill: chartreuse;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem5 {
+	fill: chocolate;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem6 {
+	fill: cornflowerblue;
+	stroke-width: 6;	
+}
+
+.miniItem7 {
+	fill: crimson;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem8 {
+	fill: cyan;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem9 {
+	fill: darkcyan;
+	stroke-width: 6;	
+}
+
+.miniItem10 {
+	fill: darkgoldenrod;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.miniItem11 {
+	fill: darkgreen;
+	fill-opacity: .7;
+	stroke-width: 6;	
+}
+
+.brush .extent {
+	stroke: gray;
+	fill: dodgerblue;
+	fill-opacity: .365;
+}

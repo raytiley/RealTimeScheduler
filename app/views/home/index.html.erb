@@ -1,0 +1,91 @@
+<script type="text/x-handlebars">
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">Real Time Static Scheduler</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+<div class="container">
+	{{outlet}}
+</div>
+
+</script>
+
+<script type="text/x-handlebars" data-template-name="taskSets">
+	<div class="row">
+		<div class="span3 taskLists">
+			<div class="row">
+				<span class="span3"><h3>Task Sets</h3></span>
+			</div>
+			<div class="input-append">
+				{{view Ember.TextField valueBinding="newTaskName" class="span2" placeholder="Task Name"}}
+				<button class="btn" type="button" {{action "save"}}>New</button>
+			</div>
+			<ul class="nav nav-list nav-tabs nav-stacked">
+				{{#each taskSet in controller}}
+					{{#linkTo "taskSet" taskSet tagName="li" href=false}}
+						{{#linkTo "taskSet" taskSet}}{{ taskSet.name }}{{/linkTo}}
+					{{/linkTo}}
+				{{/each}}
+			</ul>
+		</div>
+		<div class="span9 taskLists">
+			{{outlet}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			{{outlet graph}}
+		</div>
+	</div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="taskSets/index">
+	<h3>Welcome</h3>
+	<p>
+	Choose a Task Set or Create a new one.
+	</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="graph">
+
+	{{#if schedule}}
+		{{{ graph }}}
+	{{else}}
+		<h1>{{emptyText model}}</h1>
+	{{/if}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="taskSet">
+	<div class="row">
+		<span class="span3"><h3>{{ name }}</h3></span>
+		<span class="span2">
+			<a class="btn btn-small btn-success task-btn" {{action "new"}} ><i></i>New</a>
+			<a class="btn btn-small btn-primary task-btn" {{action "save"}} ><i></i>Save</a>
+		</span>
+	</div>
+
+		<div class="row">
+			<span class="span2"><h4>Name</h4></span>
+			<span class="span1"><h4>Period</h4></span>
+			<span class="span1"><h4>Deadline</h4></span>
+			<span class="span1"><h4>WCET</h4></span>
+			<span class="span1"><h4>Offset</h4></span>
+		</div>
+
+	{{#each task in tasks}}
+		<div class="controls controls-row">
+		{{view Ember.TextField valueBinding="task.name" class="span2" placeholder="name"}}
+		{{view Ember.TextField valueBinding="task.period" class="span1" placeholder="period"}}
+		{{view Ember.TextField valueBinding="task.deadline" class="span1" placeholder="deadline"}}
+		{{view Ember.TextField valueBinding="task.worstCaseExecutionTime" class="span1" placeholder="wcet"}}
+		{{view Ember.TextField valueBinding="task.offset" class="span1" placeholder="offset"}}
+		<span class="span1"><a class="btn btn-small btn-danger" {{action "delete" task.id}}><i class="icon-minus-sign"></i></a></span>
+		</div>
+	{{/each}}
+</script>
