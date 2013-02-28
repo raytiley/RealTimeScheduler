@@ -19,7 +19,22 @@ class TaskSetsController < ActionController::Base
 
 	def schedule
 		@schedule = TaskSet.find(params[:id]).generate_schedule
-		render :json  => @schedule.to_json
+		render :json  => {"schedule" =>@schedule}.to_json
+	end
+
+	def verify
+		@task_set = TaskSet.find(params[:id])
+		@schedule = params[:schedule]
+
+		begin
+			@task_set.verify @schedule
+		rescue Exception => e
+			render :json => {"error" => e.message}
+			return
+		end
+
+		render :json  => "Schedule Verified"
+
 	end
 	
 end

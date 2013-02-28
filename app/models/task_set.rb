@@ -93,7 +93,7 @@ class TaskSet < ActiveRecord::Base
   	schedule.each_slice(task.period) do |period|
 
   		# get all occurence of task in period
-  		tasks = period.select{|t| t == task.name}
+  		tasks = period.select{|t| t == task.id}
   		
   		# make sure schedule has given task enough time to complete (WCET)
   		unless tasks.count == task.worst_case_execution_time
@@ -101,7 +101,7 @@ class TaskSet < ActiveRecord::Base
   		end
 
   		# make sure last occurence of task in period is before deadline
-  		unless period.rindex(task.name) <= task.deadline
+  		unless period.rindex(task.id) < task.deadline
   			raise "Task #{task.name} missed deadline"
   		end
   	end
