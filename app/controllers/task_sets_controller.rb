@@ -29,11 +29,11 @@ class TaskSetsController < ActionController::Base
 		begin
 			@task_set.verify @schedule
 		rescue Exception => e
-			render :json => {"error" => e.message}
+			render :json => {"error" => e.message}, :status => :not_acceptable
 			return
 		end
 
-		render :json  => "Schedule Verified"
+		render :json  => "OK"
 
 	end
 	
