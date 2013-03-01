@@ -85,7 +85,7 @@ App.TaskSet = DS.Model.extend({
   		current = this.get('schedule').get('firstObject');
 
   	this.get('schedule').forEach(function(item, index) {
-  		if(item.get('id') !== current.get('id') || index === (this.get('schedule').length -1)) {
+  		if(item.get('id') !== current.get('id') || index === (this.get('schedule').get('length') -1)) {
   			//We've switched tasks push the finishing task
   			items.push({lane: this.get('tasks').indexOf(current), id: current.get('name'), start: start, end: index});
   			start = index;
