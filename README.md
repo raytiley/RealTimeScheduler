@@ -4,13 +4,13 @@
 
 There are two primary endpoints for working with the scheduling api, `/task_sets` and `/tasks`. 
 
-*`/task_sets` supports create and read opperations. 
-*`/tasks` supports standard CRUD opperations. 
+*  `/task_sets` supports create and read opperations. 
+*  `/tasks` supports standard CRUD opperations. 
 
 Additionally `/task_sets` has two additional endpoints, `/task_sets/:id/schedule` and `task_sets/:id/verify`. 
 
-*`/task_sets/:id/schedule` supports only GET opperations and returns an array of task ids that represents the schedule.
-*`\task_sets\:id\verify` supports only POST operations and accepts an array of task ids that make up the schedule. 
+*  `/task_sets/:id/schedule` supports only GET opperations and returns an array of task ids that represents the schedule.
+*  `\task_sets\:id\verify` supports only POST operations and accepts an array of task ids that make up the schedule. 
 
 A valid schedule will return a `200 OK` response code. An invalid schedule will return a `406 Not Acceptable` response code. Further details about all the end points are provided below.
 
