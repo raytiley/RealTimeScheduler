@@ -1,9 +1,12 @@
 App.TaskSetController = Ember.ObjectController.extend({
 	delete: function(taskID) {
 		var task = App.Task.find(taskID);
+		task.on('didDelete', function() {
+			App.TaskSet.find();
+		});
+
 		task.deleteRecord();
 		this.get('store').commit();
-		this.get('model').reload();
 	},
 	newTask: function() {
 		var ts = this.get('model');
@@ -15,9 +18,11 @@ App.TaskSetController = Ember.ObjectController.extend({
 			worstCaseExecutionTime: this.get('newWCET'),
 			offset: this.get('newOffset')
 		});
+		task.on('didCreate', function() {
+			ts.reload();
+		})
 		task.get('store').commit();
 		this.resetNewInputs();
-		ts.reload();
 	},
 	newName: "",
 	newPeriod: "",
