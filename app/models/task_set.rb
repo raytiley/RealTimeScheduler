@@ -99,6 +99,11 @@ class TaskSet < ActiveRecord::Base
   		unless tasks.count == task.worst_case_execution_time
   			raise "Task #{task.name} not given enough execution time" 
   		end
+      
+      #make sure task starts at or after offset
+      unless period.index(task.id) >= task.offset
+        raise "Task #{task.name} starts before offset"
+      end
 
   		# make sure last occurence of task in period is before deadline
   		unless period.rindex(task.id) < task.deadline
